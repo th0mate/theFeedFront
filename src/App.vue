@@ -1,85 +1,71 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <div id="wrapper">
+    <header>
+      <h1 >The feed</h1>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <div >Les membres</div>
+        <div >S'inscrire</div>
+        <div >Se connecter</div>
       </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header> 
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  #wrapper{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    min-height: 100vh;
+    background-color: rgb(225, 235, 250);
+  }
+  header{
+    width: 100%;
+    position:sticky;
+    top:0px;
+    background-color: rgb(100, 210, 250);
+    padding: 20px;
+  }
+  header h1{
+    text-align: center;
+    font-family: helvetica, serif;
+    font-weight: 700;
+  }
+  nav{
+    box-shadow: 0 0 0.5rem #999;
+    display:flex;
+    justify-content:space-evenly;
+    width:80%;
+    margin: 0 auto;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  nav >div{
+    padding:10px;  
+    background-color: rgb(105, 190, 250);
+    flex-grow:1;
+    text-align: center;
+    border: solid #22A 1px;
+  }
+  nav >div:hover{
+    box-shadow: 0 0 0.3rem #000;
+    cursor: pointer;
+  }
+  main{
+    max-width: 1280px;
+    width:780px;
+    padding: 10px;
+    background-color: rgb(225, 240, 255);
+    flex-grow:1;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  @media (max-width: 800px) {
+    main {
+      width:80%;
+    }
   }
+ </style>
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
