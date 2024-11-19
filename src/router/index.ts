@@ -10,15 +10,21 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Feed
+      redirect: '/feed'
     },
     {
       path: '/feed',
+      name: 'feed',
       component: Feed
     },
     {
       path: '/users',
+      name: 'allUsers',
       component: Utilisateurs
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/feed'
     }
   ]
 })

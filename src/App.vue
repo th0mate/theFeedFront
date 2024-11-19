@@ -4,9 +4,9 @@
 <template>
   <div id="wrapper">
     <header>
-      <h1 @click="$router.push('/feed')">The feed</h1>
+      <h1 @click="$router.push({name: 'feed'})">The feed</h1>
       <nav>
-        <div @click="$router.push('/users')">Les membres</div>
+        <div @click="$router.push({name: 'allUsers'})">Les membres</div>
         <div >S'inscrire</div>
         <div >Se connecter</div>
       </nav>
