@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import Feed from '@/views/FeedMain.vue'
 import Utilisateurs from '@/views/AllUsers.vue'
 
@@ -25,6 +25,16 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       redirect: '/feed'
+    },
+    {
+      path: '/feed/:id',
+      name: 'singleMessage',
+      component: () => import('@/views/SingleMessage.vue')
+    },
+    {
+      path: '/users/:id',
+      name: 'singleUser',
+      component: () => import('@/views/SingleUser.vue')
     }
   ]
 })
