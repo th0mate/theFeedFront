@@ -6,7 +6,7 @@ defineProps<{utilisateur: Utilisateur}>();
 <template>
   <div class="content-box">
     <div class="top">
-      Profil de {{ utilisateur.login }}
+      Profil de <router-link class="clickable" :to="{name: 'singleUser', params: {id: utilisateur.id}}">{{ utilisateur.login }}</router-link>
     </div>
     <div class="content">
       <div class="group">
