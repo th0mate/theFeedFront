@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import {useRoute} from 'vue-router'
 import BoiteUtilisateur from "@/components/BoiteUtilisateur.vue";
-import { ref, Ref } from "vue";
+import { ref, type Ref } from "vue";
+import type {Utilisateur} from "@/types";
 
 const route = useRoute()
 const id = route.params.id
 
 const user: Ref<Utilisateur> = ref({
-  id: id,
+  id: Number(id),
   adresseEmail: "lapin@gmail.com",
   login: "lapin",
   premium: false

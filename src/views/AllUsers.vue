@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BoiteUtilisateur from "@/components/BoiteUtilisateur.vue";
-import { ref, Ref } from "vue";
+import { ref, type Ref } from "vue";
+import type {Utilisateur} from "@/types";
 
 const users: Ref<Utilisateur[]> = ref([{
   id: 4,

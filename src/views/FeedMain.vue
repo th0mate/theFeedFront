@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BoitePublication from "@/components/BoitePublication.vue";
-import {ref, Ref} from "vue";
+import {ref, type Ref} from "vue";
 import type {Publication} from "@/types";
 
 const publications: Ref<Publication[]> = ref([{

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import {useRoute} from 'vue-router'
 import type {Publication} from "@/types";
-import {ref, Ref} from "vue";
+import {ref, type Ref} from "vue";
 import BoitePublication from "@/components/BoitePublication.vue";
 
 
