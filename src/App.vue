@@ -1,13 +1,16 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <div id="wrapper">
     <header>
-      <h1 >The feed</h1>
+      <h1 @click="$router.push('/feed')">The feed</h1>
       <nav>
-        <div >Les membres</div>
+        <div @click="$router.push('/users')">Les membres</div>
         <div >S'inscrire</div>
         <div >Se connecter</div>
       </nav>
-    </header> 
+    </header>
     <main>
       <router-view />
     </main>
@@ -44,7 +47,7 @@
   }
 
   nav >div{
-    padding:10px;  
+    padding:10px;
     background-color: rgb(105, 190, 250);
     flex-grow:1;
     text-align: center;
