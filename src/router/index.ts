@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Feed from '@/views/FeedMain.vue'
+import Utilisateurs from '@/views/AllUsers.vue'
 
 const router = createRouter({
   //Cette ligne indique qu'on utilise la gestion html5 des urls
@@ -14,6 +15,10 @@ const router = createRouter({
     {
       path: '/feed',
       component: Feed
+    },
+    {
+      path: '/users',
+      component: Utilisateurs
     }
   ]
 })
