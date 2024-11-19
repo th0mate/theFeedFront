@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import BoiteUtilisateur from "@/components/BoiteUtilisateur.vue";
-import { ref, type Ref } from "vue";
-import type {Utilisateur} from "@/types";
+import {ref} from "vue";
+import {apiStore} from "@/util/apiStore";
 
-const users: Ref<Utilisateur[]> = ref([{
-  id: 4,
-  adresseEmail: "toto@gouv.fr",
-  login: "toto",
-  premium: false
-}]);
+const users = ref([]);
+
+
+apiStore.getAll('utilisateurs')
+  .then(reponseJSON => {
+    users.value = reponseJSON['member'];
+    console.log(users.value);
+  });
+
+
+
 </script>
 
 <template>
   <div v-for="user in users" :key="user.id">
-    <BoiteUtilisateur :utilisateur="user" />
+    <BoiteUtilisateur :utilisateur="user"/>
   </div>
 </template>
 

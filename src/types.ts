@@ -1,6 +1,6 @@
 export interface Utilisateur {
   id: number;
-  adresseEmail: string;
+  adresseMail: string;
   login: string;
   premium: boolean;
 }

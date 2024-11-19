@@ -15,7 +15,7 @@ defineProps<{utilisateur: Utilisateur}>();
       </div>
       <div class="group">
         <label>Adresse e-mail</label>
-        <input :value="utilisateur.adresseEmail" >
+        <input :value="utilisateur.adresseMail" >
       </div>
     </div>
   </div>
