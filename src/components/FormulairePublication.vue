@@ -2,13 +2,16 @@
 import { ref, type Ref } from "vue";
 import { apiStore } from "@/util/apiStore";
 
+const emit = defineEmits<{updated: void}>();
+
 const message: Ref<string> = ref('');
 
 const envoyer = () => {
   apiStore.createRessource('publications', {message: message.value})
     .then(reponseJSON => {
-      console.log(reponseJSON);
+      console.log(reponseJSON); //TODO
       message.value = '';
+      emit('updated');
     });
 }
 </script>

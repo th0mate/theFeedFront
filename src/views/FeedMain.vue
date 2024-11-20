@@ -5,6 +5,10 @@ import type {Publication} from "@/types";
 import {apiStore} from "@/util/apiStore";
 import FormulairePublication from "@/components/FormulairePublication.vue";
 
+const chargerFeed = () => {
+  document.location.reload();
+};
+
 const publications: Ref<Publication[]> = ref([]);
 
 apiStore.getAll('publications')
@@ -18,7 +22,7 @@ apiStore.getAll('publications')
   <h1>Accueil</h1>
 
 
-  <FormulairePublication/>
+  <FormulairePublication @updated="chargerFeed"/>
 
   <div v-for="publication in publications" :key="publication.id">
     <BoitePublication :publication="publication"/>
