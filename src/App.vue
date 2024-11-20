@@ -1,22 +1,29 @@
 <script setup lang="ts">
 
 import {apiStore} from "@/util/apiStore";
+import {ref} from "vue";
 
 const logout = () => {
   apiStore.logout();
 }
 
+const loaded = ref(false);
+
+apiStore.refresh();
+
+loaded.value = true;
+
 </script>
 
 <template>
-  <div id="wrapper">
+  <div id="wrapper" v-if="loaded">
     <header>
       <h1 @click="$router.push({name: 'feed'})">The feed</h1>
       <nav>
         <div @click="$router.push({name: 'allUsers'})">Les membres</div>
-        <div v-if="apiStore.estConnecte === false">S'inscrire</div>
-        <div v-if="apiStore.estConnecte === false" @click="$router.push({name: 'login'})">Se connecter</div>
-        <div v-if="apiStore.estConnecte === true" @click="logout">Se déconnecter</div>
+        <div v-if="!apiStore.estConnecte">S'inscrire</div>
+        <div v-if="!apiStore.estConnecte" @click="$router.push({name: 'login'})">Se connecter</div>
+        <div v-if="apiStore.estConnecte" @click="logout">Se déconnecter</div>
       </nav>
     </header>
     <main>

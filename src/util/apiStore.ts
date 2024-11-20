@@ -74,5 +74,27 @@ export const apiStore = reactive({
             })
         }
       })
+  },
+
+  refresh(): Promise<any> {
+    return fetch(this.apiUrl + "token/refresh", {
+      method: "POST",
+      credentials: 'include'
+    })
+      .then(reponsehttp => {
+        if (!reponsehttp.ok) {
+          return reponsehttp.json()
+            .then(reponseJSON => {
+              return {success: false, error: reponseJSON.message};
+            })
+        } else {
+          return reponsehttp.json()
+            .then(reponseJSON => {
+              this.utilisateurConnecte = reponseJSON;
+              this.estConnecte = true;
+              return {success: true};
+            })
+        }
+      })
   }
 });
