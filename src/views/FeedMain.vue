@@ -2,18 +2,14 @@
 import BoitePublication from "@/components/BoitePublication.vue";
 import {ref, type Ref} from "vue";
 import type {Publication} from "@/types";
+import {apiStore} from "@/util/apiStore";
 
-const publications: Ref<Publication[]> = ref([{
-  id: 3,
-  message: "Hello world !!",
-  datePublication: "2023-09-15T12:02:09.037Z",
-  auteur: {
-    id: 4,
-    adresseEmail: "toto@gouv.fr",
-    login: "toto",
-    premium: false
-  }
-}]);
+const publications: Ref<Publication[]> = ref([]);
+
+apiStore.getAll('publications')
+  .then(reponseJSON => {
+    publications.value = reponseJSON['member'];
+  });
 </script>
 
 <template>

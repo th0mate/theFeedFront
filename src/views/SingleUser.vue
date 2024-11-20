@@ -3,16 +3,18 @@ import {useRoute} from 'vue-router'
 import BoiteUtilisateur from "@/components/BoiteUtilisateur.vue";
 import { ref, type Ref } from "vue";
 import type {Utilisateur} from "@/types";
+import {apiStore} from "@/util/apiStore";
 
-const route = useRoute()
-const id = route.params.id
+const route = useRoute();
+const id = route.params.id;
 
-const user: Ref<Utilisateur> = ref({
-  id: Number(id),
-  adresseEmail: "lapin@gmail.com",
-  login: "lapin",
-  premium: false
-});
+const user: Ref<Utilisateur> = ref('Chargement...');
+
+
+apiStore.getById('utilisateurs', id)
+  .then(reponseJSON => {
+    user.value = reponseJSON;
+  });
 
 </script>
 

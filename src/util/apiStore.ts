@@ -5,5 +5,9 @@ export const apiStore = {
     return fetch(this.apiUrl+ressource)
       .then(reponsehttp => reponsehttp.json())
   },
-  //à compléter plus tard avec les autres appels à l'API
+
+  getById(ressource:string, id:number):Promise<any>{
+    return fetch(this.apiUrl+ressource+"/"+id)
+      .then(reponsehttp => reponsehttp.json())
+  }
 }
