@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import {apiStore} from "@/util/apiStore";
+import router from "@/router";
 const connectingUser = ref({
   login: "",
   password:""
@@ -8,7 +9,11 @@ const connectingUser = ref({
 function connect():void{
   apiStore.login(connectingUser.value.login, connectingUser.value.password)
     .then(reponseJSON => {
-      console.log(reponseJSON);
+      if (reponseJSON['success']) {
+        router.push({name: 'feed'});
+      } else {
+        alert('Erreur de connexion');
+      }
     });
 }
 </script>

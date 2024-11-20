@@ -14,9 +14,9 @@ const logout = () => {
       <h1 @click="$router.push({name: 'feed'})">The feed</h1>
       <nav>
         <div @click="$router.push({name: 'allUsers'})">Les membres</div>
-        <div>S'inscrire</div>
-        <div @click="$router.push({name: 'login'})">Se connecter</div>
-        <div @click="logout">Se déconnecter</div>
+        <div v-if="apiStore.estConnecte === false">S'inscrire</div>
+        <div v-if="apiStore.estConnecte === false" @click="$router.push({name: 'login'})">Se connecter</div>
+        <div v-if="apiStore.estConnecte === true" @click="logout">Se déconnecter</div>
       </nav>
     </header>
     <main>

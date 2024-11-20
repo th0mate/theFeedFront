@@ -22,7 +22,7 @@ apiStore.getAll('publications')
   <h1>Accueil</h1>
 
 
-  <FormulairePublication @updated="chargerFeed"/>
+  <FormulairePublication @updated="chargerFeed" v-if="apiStore.estConnecte === true"/>
 
   <div v-for="publication in publications" :key="publication.id">
     <BoitePublication :publication="publication"/>
