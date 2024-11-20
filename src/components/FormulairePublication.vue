@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, type Ref } from "vue";
 import { apiStore } from "@/util/apiStore";
+import {notify} from "@kyvg/vue3-notification";
 
 const emit = defineEmits<{updated: void}>();
 
@@ -8,8 +9,11 @@ const message: Ref<string> = ref('');
 
 const envoyer = () => {
   apiStore.createRessource('publications', {message: message.value})
-    .then(reponseJSON => {
-      console.log(reponseJSON); //TODO
+    .then(() => {
+      notify({
+        type: 'success',
+        title: 'Publication déposée',
+      });
       message.value = '';
       emit('updated');
     });

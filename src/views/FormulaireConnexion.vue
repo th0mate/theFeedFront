@@ -2,6 +2,8 @@
 import {ref} from 'vue';
 import {apiStore} from "@/util/apiStore";
 import router from "@/router";
+import { notify } from "@kyvg/vue3-notification";
+
 const connectingUser = ref({
   login: "",
   password:""
@@ -10,9 +12,17 @@ function connect():void{
   apiStore.login(connectingUser.value.login, connectingUser.value.password)
     .then(reponseJSON => {
       if (reponseJSON['success']) {
+        notify({
+          type: 'success',
+          title: 'Connexion réussie',
+        });
         router.push({name: 'feed'});
       } else {
-        alert('Erreur de connexion');
+        notify({
+          type: 'warn',
+          title: 'Connexion impossible',
+          text: 'Mot de passe ou identifiant incorrect'
+        });
       }
     });
 }

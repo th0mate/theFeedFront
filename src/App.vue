@@ -2,8 +2,13 @@
 
 import {apiStore} from "@/util/apiStore";
 import {ref} from "vue";
+import {Notifications, notify} from "@kyvg/vue3-notification";
 
 const logout = () => {
+  notify({
+    type: 'success',
+    title: 'Déconnexion réussie',
+  });
   apiStore.logout();
 }
 
@@ -27,6 +32,7 @@ loaded.value = true;
       </nav>
     </header>
     <main>
+      <notifications position="bottom right" :duration="10000" />
       <router-view/>
     </main>
   </div>
