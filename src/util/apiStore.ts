@@ -1,5 +1,8 @@
+import {ref} from "vue";
+
 export const apiStore = {
   apiUrl: "http://localhost/the_feed_api/public/api/",
+  utilisateurConnecter: ref(null),
 
   getAll(ressource: string): Promise<any> {
     return fetch(this.apiUrl + ressource)
@@ -31,6 +34,17 @@ export const apiStore = {
       },
       credentials: 'include',
       body: JSON.stringify(data)
+    })
+      .then(reponsehttp => reponsehttp.json())
+  },
+
+  logout(): Promise<any> {
+    return fetch(this.apiUrl + "token/invalidate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include'
     })
       .then(reponsehttp => reponsehttp.json())
   }

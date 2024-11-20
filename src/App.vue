@@ -1,5 +1,11 @@
 <script setup lang="ts">
 
+import {apiStore} from "@/util/apiStore";
+
+const logout = () => {
+  apiStore.logout();
+}
+
 </script>
 
 <template>
@@ -10,6 +16,7 @@
         <div @click="$router.push({name: 'allUsers'})">Les membres</div>
         <div>S'inscrire</div>
         <div @click="$router.push({name: 'login'})">Se connecter</div>
+        <div @click="logout">Se déconnecter</div>
       </nav>
     </header>
     <main>
