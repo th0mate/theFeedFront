@@ -51,7 +51,24 @@ export const apiStore = reactive({
       credentials: 'include',
       body: JSON.stringify(data)
     })
-      .then(reponsehttp => reponsehttp.json())
+      .then(reponsehttp => {
+        if (reponsehttp.ok) {
+          return reponsehttp.json()
+            .then(() => {
+              return {success: true};
+            })
+        } else if (reponsehttp.status == 401 && refreshAllowed) {
+          return this.refresh()
+            .then(
+              () => this.createRessource(ressource, data)
+            )
+        } else {
+          return reponsehttp.json()
+            .then(reponseJSON => {
+              return {success: false, error: reponseJSON.message};
+            })
+        }
+      })
   },
 
   logout(): Promise<any> {
