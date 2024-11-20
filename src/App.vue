@@ -26,13 +26,13 @@ loaded.value = true;
       <h1 @click="$router.push({name: 'feed'})">The feed</h1>
       <nav>
         <div @click="$router.push({name: 'allUsers'})">Les membres</div>
-        <div v-if="!apiStore.estConnecte">S'inscrire</div>
+        <div v-if="!apiStore.estConnecte" @click="$router.push({name: 'register'})">S'inscrire</div>
         <div v-if="!apiStore.estConnecte" @click="$router.push({name: 'login'})">Se connecter</div>
         <div v-if="apiStore.estConnecte" @click="logout">Se déconnecter</div>
       </nav>
     </header>
     <main>
-      <notifications position="bottom right" :duration="10000" />
+      <notifications position="bottom right" :duration="10000"/>
       <router-view/>
     </main>
   </div>
