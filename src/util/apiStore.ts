@@ -9,5 +9,17 @@ export const apiStore = {
   getById(ressource:string, id:number):Promise<any>{
     return fetch(this.apiUrl+ressource+"/"+id)
       .then(reponsehttp => reponsehttp.json())
+  },
+
+  login (login:string, password:string):Promise<any>{
+    return fetch(this.apiUrl+"auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include',
+      body: JSON.stringify({login: login, password: password})
+    })
+    .then(reponsehttp => reponsehttp.json())
   }
 }

@@ -9,7 +9,7 @@
       <nav>
         <div @click="$router.push({name: 'allUsers'})">Les membres</div>
         <div>S'inscrire</div>
-        <div>Se connecter</div>
+        <div @click="$router.push({name: 'login'})">Se connecter</div>
       </nav>
     </header>
     <main>

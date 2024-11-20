@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import BoiteUtilisateur from "@/components/BoiteUtilisateur.vue";
-import {ref} from "vue";
+import {type Ref, ref} from "vue";
 import {apiStore} from "@/util/apiStore";
+import type {Utilisateur} from "@/types";
 
-const users = ref([]);
+const users:Ref<Utilisateur[]> = ref([]);
 
 
 apiStore.getAll('utilisateurs')
